@@ -4,5 +4,5 @@ import org.example.project.domain.model.Currency
 import org.example.project.domain.model.RequestState
 
 interface CurrencyApiService {
-    fun getLatestExchangeRates() : RequestState<List<Currency>>
+    suspend fun getLatestExchangeRates() : RequestState<List<Currency>>
 }

@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import data.remote.api.CurrencyApiServiceImpl
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -20,8 +21,13 @@ import kotlinproject.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     MaterialTheme {
+
         var showContent by remember { mutableStateOf(false) }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+            LaunchedEffect(Unit){
+                CurrencyApiServiceImpl().getLatestExchangeRates()
+            }
+
             Button(onClick = { showContent = !showContent }) {
                 Text("Click me!")
             }
